@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// ✅ ДОБАВЛЯЕМ UiEvent
 sealed class PcBuildDetailEvent {
     object LoadBuild : PcBuildDetailEvent()
     object Retry : PcBuildDetailEvent()
