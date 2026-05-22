@@ -48,7 +48,6 @@ fun StepComponentScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (state.currentStep > 0) {
-                    // ✅ Используем onEvent вместо прямого вызова
                     IconButton(onClick = { viewModel.onEvent(ComponentSelectionEvent.PreviousStep) }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
@@ -100,7 +99,6 @@ fun StepComponentScreen(
                             color = MaterialTheme.colorScheme.primary
                         )
                     }
-                    // ✅ Используем onEvent вместо прямого вызова
                     Button(onClick = { viewModel.onEvent(ComponentSelectionEvent.NextStep) }) {
                         Text(if (state.currentStep == state.componentTypes.lastOrNull()?.step) "Finish" else "Next")
                         Spacer(modifier = Modifier.width(4.dp))
@@ -172,7 +170,6 @@ fun StepComponentScreen(
                         Spacer(modifier = Modifier.height(16.dp))
                         Button(onClick = {
                             currentType?.let {
-                                // ✅ Используем onEvent вместо прямого вызова
                                 viewModel.onEvent(ComponentSelectionEvent.LoadProductsByType(it.name))
                             }
                         }) {
@@ -191,7 +188,6 @@ fun StepComponentScreen(
                             ProductSelectionCard(
                                 product = product,
                                 isSelected = selectedProduct?.id == product.id,
-                                // ✅ Используем onEvent вместо прямого вызова
                                 onClick = { viewModel.onEvent(ComponentSelectionEvent.SelectProduct(product)) }
                             )
                         }
@@ -266,7 +262,7 @@ fun ProductSelectionCard(
             }
 
             Text(
-                text = "${product.price} р",  // ✅ убрал лишний $
+                text = "${product.price} р",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary

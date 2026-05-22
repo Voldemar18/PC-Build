@@ -54,13 +54,11 @@ fun EditPcBuildScreen(
     var showProductPicker by remember { mutableStateOf(false) }
     var selectedComponentType by remember { mutableStateOf<String?>(null) }
 
-    // Загружаем сборку через UiEvent
     LaunchedEffect(Unit) {
         Log.d("EditPcBuildScreen", "Loading build with ID: $buildId")
         viewModel.loadBuild(buildId)
     }
 
-    // Следим за успешным сохранением
     LaunchedEffect(uiState.saveSuccess) {
         if (uiState.saveSuccess) {
             onSave()
@@ -281,7 +279,6 @@ fun EditPcBuildScreen(
     }
 }
 
-// ✅ ComponentEditCard - Компонент для отображения карточки выбора компонента
 @Composable
 fun ComponentEditCard(
     componentType: String,
@@ -381,7 +378,6 @@ fun ComponentEditCard(
     }
 }
 
-// ✅ EditProductPickerDialog - версия диалога с currentComponent для экрана редактирования
 @Composable
 fun EditProductPickerDialog(
     componentType: String,

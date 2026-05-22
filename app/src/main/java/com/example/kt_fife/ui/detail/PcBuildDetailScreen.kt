@@ -87,7 +87,7 @@ fun PcBuildDetailScreen(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Button(onClick = {
-                            viewModel.onEvent(PcBuildDetailEvent.Retry)  // ✅ UiEvent
+                            viewModel.onEvent(PcBuildDetailEvent.Retry)
                         }) {
                             Text("Retry")
                         }

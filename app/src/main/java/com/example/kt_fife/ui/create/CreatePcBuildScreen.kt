@@ -16,7 +16,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.kt_fife.data.network.ProductResponse
 import com.example.kt_fife.domain.models.PcBuildComponent
 
-// ✅ ProductPickerDialog должен быть ОПРЕДЕЛЕН ДО CreatePcBuildScreen
 @Composable
 fun ProductPickerDialog(
     componentType: String,
@@ -114,7 +113,6 @@ fun CreatePcBuildScreen(
     var showProductPicker by remember { mutableStateOf(false) }
     var selectedComponentType by remember { mutableStateOf<String?>(null) }
 
-    // Следим за успешным сохранением
     LaunchedEffect(uiState.isSuccess) {
         if (uiState.isSuccess) {
             viewModel.onEvent(CreatePcBuildEvent.ResetSuccess)
@@ -381,7 +379,7 @@ fun CreatePcBuildScreen(
                 showProductPicker = false
                 selectedComponentType = null
             },
-            onProductSelected = { product: ProductResponse ->  // ✅ Явно указан тип
+            onProductSelected = { product: ProductResponse ->
                 selectedComponents = selectedComponents + (selectedComponentType!! to product)
                 showProductPicker = false
                 selectedComponentType = null

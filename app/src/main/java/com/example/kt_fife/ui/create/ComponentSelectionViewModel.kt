@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// ✅ UiEvent для ComponentSelectionViewModel
 sealed class ComponentSelectionEvent {
     data class LoadBuildForEdit(val buildId: Long) : ComponentSelectionEvent()
     object LoadComponentTypes : ComponentSelectionEvent()
@@ -55,7 +54,6 @@ class ComponentSelectionViewModel @Inject constructor(
     private val _state = MutableStateFlow(ComponentSelectionState())
     val state: StateFlow<ComponentSelectionState> = _state.asStateFlow()
 
-    // ✅ ЕДИНСТВЕННАЯ публичная точка входа
     fun onEvent(event: ComponentSelectionEvent) {
         when (event) {
             is ComponentSelectionEvent.LoadBuildForEdit -> loadBuildForEdit(event.buildId)
@@ -69,7 +67,6 @@ class ComponentSelectionViewModel @Inject constructor(
         }
     }
 
-    // ✅ Публичный метод для получения выбранных компонентов
     fun getSelectedComponents(): List<PcBuildComponent> {
         return _state.value.selectedComponents.values.map { product ->
             PcBuildComponent(
@@ -81,8 +78,6 @@ class ComponentSelectionViewModel @Inject constructor(
             )
         }
     }
-
-    // ============== ПРИВАТНЫЕ методы реализации (с суффиксом Impl) ==============
 
     private fun loadBuildForEdit(buildId: Long) {
         viewModelScope.launch {

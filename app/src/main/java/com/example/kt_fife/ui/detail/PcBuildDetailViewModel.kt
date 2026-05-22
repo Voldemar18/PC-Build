@@ -34,7 +34,6 @@ class PcBuildDetailViewModel @Inject constructor(
         loadBuild()
     }
 
-    // ✅ Единая точка входа для всех событий
     fun onEvent(event: PcBuildDetailEvent) {
         when (event) {
             is PcBuildDetailEvent.LoadBuild -> loadBuild()

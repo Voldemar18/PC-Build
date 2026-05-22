@@ -19,7 +19,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// ✅ ДОБАВЛЯЕМ UiEvent
 sealed class CreatePcBuildEvent {
     data class BuildNameChanged(val name: String) : CreatePcBuildEvent()
     data class IsPublicChanged(val isPublic: Boolean) : CreatePcBuildEvent()
@@ -49,7 +48,6 @@ class CreatePcBuildViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CreatePcBuildUiState())
     val uiState: StateFlow<CreatePcBuildUiState> = _uiState.asStateFlow()
 
-    // ✅ Единая точка входа для всех событий
     fun onEvent(event: CreatePcBuildEvent) {
         when (event) {
             is CreatePcBuildEvent.BuildNameChanged -> updateBuildName(event.name)

@@ -64,7 +64,6 @@ class EditPcBuildViewModel @Inject constructor(
     private var isComponentOperationInProgress = false
     private var currentBuildId: Long = -1L
 
-    // ✅ Единая точка входа для всех событий
     fun onEvent(event: EditPcBuildEvent) {
         when (event) {
             is EditPcBuildEvent.LoadBuild -> loadBuild(currentBuildId)
