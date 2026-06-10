@@ -89,6 +89,22 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
+    // ========== НОВЫЕ ЗАВИСИМОСТИ ==========
+
+    // DataStore (для сохранения темы и настроек)
+    implementation("androidx.datastore:datastore-preferences:1.1.0")
+
+    // Lifecycle ViewModel Compose (для collectAsStateWithLifecycle)
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
+    // Coil (для загрузки изображений, если понадобятся картинки)
+    implementation("io.coil-kt:coil-compose:2.6.0")
+
+    // Material 3 Window Size Class (для адаптивного дизайна)
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
+
+    // ======================================
+
     // Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")

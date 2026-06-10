@@ -64,16 +64,20 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun KT_fifeTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean? = null,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val systemDark = isSystemInDarkTheme()
+    val shouldUseDarkTheme = darkTheme ?: systemDark
+
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (shouldUseDarkTheme) dynamicDarkColorScheme(context)
+            else dynamicLightColorScheme(context)
         }
-        darkTheme -> DarkColorScheme
+        shouldUseDarkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
 
